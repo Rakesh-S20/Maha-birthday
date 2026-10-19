@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Maha 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Georgia, serif;
+  text-align: center;
+  color: #8e315e;
+  background: linear-gradient(
+    145deg,
+    #fff0f6,
+    #ffe0ec,
+    #fff7fb
+  );
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: auto;
+  padding: 35px 20px 60px;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  margin: 12px 0;
+  color: #d63384;
+}
+
+h2 {
+  color: #c0447a;
+  line-height: 1.6;
+}
+
+p {
+  line-height: 1.9;
+}
+
+.small {
+  letter-spacing: 3px;
+  font: 12px Arial, sans-serif;
+  color: #b45b83;
+}
+
+.hero {
+  animation: appear 1.4s ease both;
+}
+
+.cake {
+  font-size: 95px;
+  animation: bounce 2s infinite;
+  filter: drop-shadow(0 8px 12px #d6338430);
+}
+
+button {
+  border: 0;
+  border-radius: 50px;
+  padding: 15px 25px;
+  margin: 8px;
+  background: #e94b91;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px #d6338430;
+  transition: .25s;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+button:focus-visible,
+.gift:focus-visible {
+  outline: 3px solid #b82f70;
+  outline-offset: 4px;
+}
+
+.gift {
+  font-size: 100px;
+  cursor: pointer;
+  animation: bounce 1.8s infinite;
+  display: inline-block;
+}
+
+#letter {
+  display: none;
+  background: #fffafc;
+  padding: 25px 20px;
+  border: 1px solid #ffd5e6;
+  border-radius: 22px;
+  box-shadow: 0 10px 35px #bc568222;
+  margin-top: 25px;
+}
+
+#letter.show {
+  display: block;
+  animation: appear .8s ease both;
+}
+
+.tamil-poem {
+  background: #fff0f6;
+  border-radius: 18px;
+  padding: 15px 10px;
+  margin: 20px 0;
+  color: #9d3569;
+}
+
+.tamil-poem p {
+  font-size: 17px;
+  line-height: 2.1;
+}
+
+.photos {
+  font-size: 36px;
+  margin: 20px;
+}
+
+footer {
+  font: 12px Arial, sans-serif;
+  margin-top: 40px;
+  color: #b45b83;
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  animation: float linear forwards;
+  z-index: 0;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-9px) rotate(2deg);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 25px 15px 45px;
+  }
+
+  #letter {
+    padding: 22px 15px;
+  }
+
+  .tamil-poem p {
+    font-size: 16px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main>
+
+  <!-- BIRTHDAY HOME PAGE -->
+  <section class="hero">
+
+    <div class="small">A LITTLE WEBSITE MADE WITH LOVE</div>
+
+    <div class="cake">🎂</div>
+
+    <p>Today is all about you,</p>
+
+    <h1>Happy Birthday<br>Maha! 💗</h1>
+
+    <p>To my sweetest sister, my forever person. 🌷</p>
+
+    <div class="photos">🎀 💗 🦋 💗 🎀</div>
+
+    <button onclick="celebrate()">
+      ✨ Make a birthday wish
+    </button>
+
+  </section>
+
+
+  <!-- SECRET GIFT SECTION -->
+  <section style="margin-top:48px">
+
+    <div class="small">YOUR LITTLE SURPRISE</div>
+
+    <h2>A gift just for you 🎁</h2>
+
+    <p>There's something I want you to know...</p>
+
+    <div
+      class="gift"
+      onclick="openGift()"
+      role="button"
+      tabindex="0"
+      aria-label="Open Maha's birthday gift"
+      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGift()}"
+    >🎁</div>
+
+    <br>
+
+    <button onclick="openGift()">
+      Open your gift 💌
+    </button>
+
+
+    <!-- EVERYTHING BELOW STAYS HIDDEN UNTIL THE GIFT IS OPENED -->
+
+    
+<article id="letter" aria-hidden="true" inert>
+
+  <div style="font-size:45px">💖🌷💖</div>
+
+  <!-- TAMIL KAVITHAI -->
+  <h2>அன்புள்ள மஹாவிற்கு 💕</h2>
+  <div class="tamil-poem">
+
+    <h2>🌸 என் செல்லத் தங்கைக்காக ஒரு கவிதை 🌸</h2>
+
+    <p>
+      என் வாழ்வில் கிடைத்த அழகான வரம் நீ,<br>
+      என் இதயத்தில் என்றும் வாழும் உறவு நீ! 💖<br>
+      சண்டைகள் ஆயிரம் நமக்குள் வந்தாலும்,<br>
+      உன் மீது உள்ள அன்பு என்றும் குறையாது! 🫂
+    </p>
+
+    <p>
+      உன் சிரிப்பில் என் கவலைகள் மறையட்டும்,<br>
+      உன் கனவுகள் அனைத்தும் நனவாகட்டும்! ✨<br>
+      உன் பாதையில் பூக்கள் மட்டுமே பூக்கட்டும்,<br>
+      உன் வாழ்க்கை முழுவதும் மகிழ்ச்சி நிறையட்டும்! 🌷
+    </p>
+
+    <p>
+      கோபங்கள் வந்தாலும் பாசம் குறையாது,<br>
+      காலங்கள் மாறினாலும் உறவு மறையாது! 💕<br>
+      உலகமே மாறினாலும் உனக்காக நான் இருப்பேன்,<br>
+      உன் சந்தோஷத்தில் என்றும் மகிழ்ந்திருப்பேன்! ❤️
+    </p>
+
+    <p>
+      நீ நினைக்கும் ஆசைகள் எல்லாம் நிறைவேற,<br>
+      உன் வாழ்க்கையில் அன்பும் மகிழ்ச்சியும் நிறைய! 🌈<br>
+      ஆயிரம் பூக்கள் உன் பாதையில் பூக்கட்டும்,<br>
+      உன் அழகான சிரிப்பு என்றும் நிலைக்கட்டும்! 💐
+    </p>
+
+    <h2>என்றும் என் செல்லத் தங்கை நீ! 🦋</h2>
+
+  </div>
+
+  <div style="font-size:35px">🌸🌷🌸</div>
+
+  <!-- ENGLISH BIRTHDAY WISHES -->
+  <h2>🎂 Happy Birthday, My Sweet Maha! 💗</h2>
+
+  <p>
+    Happy Birthday to my beautiful sister, my best friend,
+    and my forever person! 🥹💕
+  </p>
+
+  <p>
+    No matter how much we fight, tease each other,
+    or annoy each other, you will always hold a very
+    special place in my heart. Even on our hardest days,
+    I will always be grateful to have you as my sister.
+  </p>
+
+  <p>
+    You are more than just my sister — you are a part
+    of my heart, a beautiful chapter of my life, and
+    someone I will always love beyond words. ❤️
+  </p>
+
+  <p>
+    On your special day, I wish you endless happiness,
+    genuine love, good health, beautiful memories,
+    and success in everything you do. May all your
+    dreams come true, and may life give you a thousand
+    reasons to smile every single day! ✨🌷
+  </p>
+
+  <p>
+    Whenever life gets difficult, remember that you
+    will never have to face everything alone. I will
+    always be there to support you, cheer for you,
+    protect you, and remind you how precious you are.
+  </p>
+
+  <p>
+    We may grow older, life may change, and new
+    journeys may begin, but one thing will never change:
+    <strong>you will always be my beloved sister. 🫂</strong>
+  </p>
+
+  <h2>💌 A Little Promise to You</h2>
+
+  <p>
+    I may not say it every day, but I love you more
+    than words could ever explain. Thank you for being
+    you, for being part of my life, and for giving me
+    a bond that I will treasure forever.
+  </p>
+
+  <h2>You're my forever sister. 💖</h2>
+
+  <p>
+    Happy Birthday once again, Maha! 🎂🎉<br>
+    Keep smiling, keep shining, and keep being the
+    wonderful person you are.
+  </p>
+
+  <p>
+    <strong>Love you endlessly, today, tomorrow,
+    and always! ❤️🦋</strong>
+  </p>
+
+  <div style="font-size:40px">🎂💐🧸💗🦋</div>
+
+  <p style="color:#d63384;font-style:italic">
+    With all my love, your forever-loving sibling. 💕
+  </p>
+
+</article>
+
+  </section>
+
+  <footer>
+    Made with ♡ just for Maha · October 20
+  </footer>
+
+</main>
+
+
+<script>
+let giftOpened = false;
+let celebrationRunning = false;
+
+function openGift() {
+  const letter = document.getElementById('letter');
+
+  // Open the surprise only once.
+  if (giftOpened) {
+    letter.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    return;
+  }
+
+  giftOpened = true;
+
+  letter.inert = false;
+  letter.setAttribute('aria-hidden', 'false');
+  letter.classList.add('show');
+
+  celebrate();
+
+  setTimeout(() => {
+    letter.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }, 150);
+}
+
+
+function celebrate() {
+  if (celebrationRunning) return;
+  celebrationRunning = true;
+
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+
+  if (!ctx) {
+    celebrationRunning = false;
+    return;
+  }
+
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+
+  const colors = [
+    '#ff5caa',
+    '#ffd166',
+    '#c77dff',
+    '#ff8fab',
+    '#ffffff'
+  ];
+
+  const pieces = Array.from({ length: 150 }, () => ({
+    x: Math.random() * width,
+    y: -20 - Math.random() * height * 0.5,
+    s: 3 + Math.random() * 6,
+    v: 2 + Math.random() * 5,
+    c: colors[Math.floor(Math.random() * colors.length)],
+    r: Math.random() * 6
+  }));
+
+  let frame = 0;
+  const maxFrames = 180;
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+
+    pieces.forEach(p => {
+      p.y += p.v;
+      p.x += Math.sin(p.y / 35) * 1.5;
+      p.r += 0.08;
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.r);
+      ctx.fillStyle = p.c;
+      ctx.fillRect(0, 0, p.s, p.s * 1.6);
+      ctx.restore();
+    });
+
+    frame++;
+
+    if (frame < maxFrames) {
+      requestAnimationFrame(draw);
+    } else {
+      ctx.clearRect(0, 0, width, height);
+      celebrationRunning = false;
+    }
+  }
+
+  draw();
+}
+
+
+// FLOATING HEARTS
+function heart() {
+  if (
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    return;
+  }
+
+  const el = document.createElement('div');
+  el.className = 'heart';
+  el.setAttribute('aria-hidden', 'true');
+
+  const symbols = ['💗', '💕', '💖', '✨', '🌸'];
+
+  el.textContent = symbols[
+    Math.floor(Math.random() * symbols.length)
+  ];
+
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.fontSize = (15 + Math.random() * 20) + 'px';
+
+  const duration = 5 + Math.random() * 5;
+  el.style.animationDuration = duration + 's';
+
+  document.body.appendChild(el);
+
+  setTimeout(() => el.remove(), duration * 1000);
+}
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  setInterval(heart, 450);
+}
+</script>
+
+</body>
+</html>
